@@ -1,4 +1,10 @@
 GoSeite::Application.routes.draw do
+  resources :forum_posts
+
+  resources :forum_threads
+
+  resources :forum_areas
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

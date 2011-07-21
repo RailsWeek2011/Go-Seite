@@ -3,9 +3,9 @@
 one:
   content: MyText
   user_id: 1
-  forumthread_id: 1
+  forum_thread_id: 1
 
 two:
   content: MyText
   user_id: 1
-  forumthread_id: 1
+  forum_thread_id: 1

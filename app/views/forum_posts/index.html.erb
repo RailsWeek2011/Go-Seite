@@ -1,0 +1,27 @@
+<h1>Listing forum_posts</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th>User</th>
+    <th>Forum thread</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forum_posts.each do |forum_post| %>
+  <tr>
+    <td><%= forum_post.content %></td>
+    <td><%= forum_post.user_id %></td>
+    <td><%= forum_post.forum_thread_id %></td>
+    <td><%= link_to 'Show', forum_post %></td>
+    <td><%= link_to 'Edit', edit_forum_post_path(forum_post) %></td>
+    <td><%= link_to 'Destroy', forum_post, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Forum post', new_forum_post_path %>
