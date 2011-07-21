@@ -1,0 +1,32 @@
+# Features #
+Dieses Projekt soll eine Website für den Go-Club Giessen werden. Sowie ein Turniersystem die dort intregiert werden.
+
+Die Website:
+- News System
+  |-> Für jede News wird ein Thread im Forum erstellt, um es zu kommentieren
+- ein vereinfachtes "Forum"
+  |-> Verschiedene Threads
+  |-> Darin kann gepostet 
+- Benutzer Zähler
+- Bundesliga
+  |-> SGF-Datein Upload
+  |  |-> Text oder .sgf
+  |-> Matching vergangener Archive
+- User/Gruppen Verwaltung
+  |-> Verschiedene Rechte für:
+  |  |-> Turniersystem
+  |  |-> Forum
+  |  |-> News
+- User können sich fürs Turnier Anmelden ohne Benutztereingaben
+- Turniersystem
+  |-> Gäste können sich Anmelden
+  |  |-> Sie bekommen eine E-Mail mit ein Passwort um sich Abzumelden oder zu Bearbeiten
+  |-> Matching wird das K/O-System sein
+  |-> Turnier Anlegen/Bearbeiten/Löschen
+  |-> Seite für:
+  |  |-> die Anfahrt's Beschreibung
+  |  |-> Teilnehmerbedingungen
+  |  |-> Voranmeldung
+  |  |-> Kontakt Person
+- Wichtige Links
+  |-> DGOB
