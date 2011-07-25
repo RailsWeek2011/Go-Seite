@@ -1,0 +1,28 @@
+<h1>Forum Areas</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forum_areas.each do |forum_area| %>
+  <tr>
+    <td><%= forum_area.title %></td>
+    <td><%= link_to 'Show', forum_area %></td>
+    <% if can? :update, @forum_areas %>
+      <td><%= link_to 'Edit', edit_forum_area_path(forum_area) %></td>
+    <% end %>
+    <% if can? :destroy, @forum_areas %>
+      <td><%= link_to 'Destroy', forum_area, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if can? :new, @forum_areas %>
+  <%= link_to 'New Forum area', new_forum_area_path %>
+<% end %>

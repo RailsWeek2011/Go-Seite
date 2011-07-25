@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  content: MyText
+  user_id: 1
+  forum_area_id: 1
+
+two:
+  title: MyString
+  content: MyText
+  user_id: 1
+  forum_area_id: 1

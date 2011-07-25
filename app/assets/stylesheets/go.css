@@ -1,0 +1,270 @@
+/* CSS Document */
+body{
+	background-image:url(/assets/BG.png);
+	background-repeat:repeat-x;
+	padding:0px;
+	margin:0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+}
+img{
+	border:0px;
+}
+#div_Container{
+	vertical-align:top;
+	color: #FFFFFF;
+	text-align: center;
+	width: 900px;
+	height: 867px;
+}
+#div_Logo{
+	width: 900px;
+	height: 196px;
+}
+
+#div_Platzhalter_2{
+	width: 156px;
+	height: 671px;
+	float:left;
+	background-image:url(/assets/Platzhalter_2.png);
+}
+#div_Content_Box{
+	width: 578px;
+	height: 671px;
+	float:left;
+}
+#div_Menue{
+	background-image:url(/assets/BG_Menue.png);
+	width: 578px;
+	height: 27px;
+	clear:both;
+}
+#div_Ueberschrift{
+	background-image:url(/assets/BG_Ueberschrift.png);
+	width: 578px;
+	height: 41px;
+	text-align:center;
+	clear:both;
+	font-size: 19px;
+	color: #dbdbda;
+	text-decoration: underline;
+	padding-top:15px;
+}
+
+
+#div_Rumpf{
+	width:578px;
+	height:501px;
+	clear:both;
+}
+#div_Rahmen_Links{
+	width:24px;
+	height:501px;
+	float:left;
+	background-image:url(/assets/Rahmen_Links.png);
+}
+/* Aus Cake Copy */
+/* Paging */
+div.paging {
+	color: #ccc;
+	margin-bottom: 2em;
+}
+div.paging div.disabled {
+	color: #ddd;
+	display: inline;
+}
+div.paging span {
+}
+div.paging span.current {
+	color: #000;
+}
+div.paging span a {
+}
+/* Scaffold View */
+dl {
+	line-height: 2em;
+	margin: 0em 0em;
+	width: 60%;
+}
+dl.altrow {
+	background: #f4f4f4;
+}
+dt {
+	font-weight: bold;
+	padding-left: 4px;
+	vertical-align: top;
+}
+dd {
+	margin-left: 10em;
+	margin-top: -2em;
+	vertical-align: top;
+}
+/* Tables */
+table {
+	background: #fff;
+	border:1px solid #ccc;
+	border-right:0;
+	clear: both;
+	color: #333;
+	margin-bottom: 10px;
+	width: 100%;
+}
+th {
+	background: #f2f2f2;
+	border:1px solid #bbb;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	text-align: center;
+}
+th a {
+	background:#f2f2f2;
+	display: block;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+th a:hover {
+	background: #ccc;
+	color: #333;
+	text-decoration: none;
+}
+table tr td {
+	background: #fff;
+	border-right: 1px solid #ccc;
+	padding: 4px;
+	text-align: left;
+	vertical-align: top;
+}
+table tr.altrow td {
+	background: #f4f4f4;
+}
+td.actions {
+	text-align: center;
+	white-space: nowrap;
+}
+td.actions a {
+	margin: 0px 6px;
+}
+.cake-sql-log table {
+	background: #f4f4f4;
+}
+.cake-sql-log td {
+	padding: 4px 8px;
+	text-align: left;
+}
+/********/
+div.message {
+	clear: both;
+	color: #900;
+	font-size: 140%;
+	font-weight: bold;
+	margin: 1em 0;
+	background-color:#000000;
+}
+div.error-message {
+	clear: both;
+	color: #900;
+	font-weight: bold;
+}
+.error-message{
+  font-size:100%;
+  color:#FF0000;
+}
+label {
+	display: block;
+	font-size: 110%;
+	padding-right: 20px;
+   margin:0px;
+}
+input, textarea {
+	clear: both;
+	font-size: 120%;
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+	padding: 0px;
+	width: 100%;
+   margin:0px 0px 5px 0px;
+}
+textarea{
+	height:45px;
+}
+
+input[type=checkbox] {
+	clear: left;
+	float: left;
+	margin: 0px 6px 5px 2px;
+	width: auto;
+}
+
+input[type=submit] {
+	display: inline;
+	font-size: 110%;
+	padding: 2px 5px;
+	width: auto;
+	vertical-align: bottom;
+}
+/* /Aus Cake Copy */
+.flash{
+	border-bottom:1px solid gray;
+	/*background-color:gray;*/
+}
+.flash_failure {
+  font-size:120%;
+  color:#CC0000;
+}
+.flash_success {
+  font-size:120%;
+  color:#00FF00;
+}
+
+#div_Inhalt{
+	width:518px;
+	height:501px;
+	float:left;
+	padding-right:10px;
+	background-image:url(/assets/BG_Inhalt.png);
+	background-repeat:no-repeat;
+	overflow:auto;
+	text-align:left;
+	color: #dbdbda;
+}
+#news_mehr{
+	text-align:right;
+}
+a{
+	color: #dbdbda;
+	text-decoration:underline;
+}
+#div_Rahmen_Rechts{
+	width:26px;
+	height:501px;
+	float:right;
+	background-image:url(/assets/Rahmen_Rechts.png);
+}
+#div_Rahmen_Unten{
+	width:578px;
+	height:57px;
+	float:none;
+	background-image:url(/assets/Rahmen_Unten.png);
+	text-align:center;
+	color:#060606;
+	padding-top:30px;
+}
+#div_Rahmen_Unten a{
+	color:#060606;
+}
+#div_Platzhalter_4{
+	width: 166px;
+	height: 671px;
+	float:left;
+	background-image:url(/assets/Platzhalter_4.png);
+}
+h2{
+	font-size:120%;
+	color:#dbdbda;
+}
+h1{
+	font-size:150%;
+	color:#975b04;
+}
+h1 a{
+    color:#975b04;
+}
