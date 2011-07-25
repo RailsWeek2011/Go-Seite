@@ -3,19 +3,23 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can :read, :all
+      can :read, :all
     if user.role? :admin
       can :manage, :all
-    elsif user.role? :fModerator
+    end
+    if user.role? :fModerator
       can :manage, ForumArea
-    elsif user.role? :blModerator
-      can :read, :all
-    elsif user.role? :tModerator
-      can :read, :all
-    elsif user.role? :author
-      can :read, :all
-    else
-      can :read, :all
+      can :manage, ForumThread
+      can :manage, ForumPost
+    end
+    if user.role? :blModerator
+    end
+    if user.role? :tModerator
+    end
+    if user.role? :author
+      can :create, ForumThread
+      can :create, ForumPost
+      can :edit, ForumPost, :user_id => user.id
     end
 
     # The first argument to `can` is the action you are giving the user permission to do.

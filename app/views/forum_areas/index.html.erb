@@ -12,10 +12,10 @@
   <tr>
     <td><%= forum_area.title %></td>
     <td><%= link_to 'Show', forum_area %></td>
-    <% if can? :update, @forum_areas %>
+    <% if can? :update, forum_area %>
       <td><%= link_to 'Edit', edit_forum_area_path(forum_area) %></td>
     <% end %>
-    <% if can? :destroy, @forum_areas %>
+    <% if can? :destroy, forum_area %>
       <td><%= link_to 'Destroy', forum_area, confirm: 'Are you sure?', method: :delete %></td>
     <% end %>
   </tr>
@@ -23,6 +23,6 @@
 </table>
 
 <br />
-<% if can? :new, @forum_areas %>
+<% if can? :new, ForumArea %>
   <%= link_to 'New Forum area', new_forum_area_path %>
 <% end %>
