@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', forum_threads_path %>
+<%= link_to 'Back', :controller => "forum_areas", :action => "show", :id => @forum_thread.forum_area %>

@@ -23,11 +23,8 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div>
-  <div class="field">
-    <%= f.label :forum_area_id %><br />
-    <%= f.number_field :forum_area_id %>
-  </div>
   <div class="actions">
+	  <%= f.hidden_field :forum_area_id %>
     <%= f.submit %>
   </div>
 <% end %>

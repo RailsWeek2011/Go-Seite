@@ -4,7 +4,20 @@
   <b>Title:</b>
   <%= @forum_area.title %>
 </p>
-
-
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @forum_area.forum_threads.each do |forum_thread| %>
+  <tr>
+    <td><%= link_to forum_thread.title, forum_thread_path(forum_thread) %></td>
+    <td></td>
+    <td><%= link_to 'Destroy', forum_thread , confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Neuer Thread', :controller => "forum_threads", :action => "new", :id => @forum_area  %> |
 <%= link_to 'Edit', edit_forum_area_path(@forum_area) %> |
 <%= link_to 'Back', forum_areas_path %>

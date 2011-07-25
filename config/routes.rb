@@ -1,13 +1,16 @@
 GoSeite::Application.routes.draw do
-  #get "home/index"
-
   devise_for :users
 
-  resources :forum_posts
-
-  resources :forum_threads
-
-  resources :forum_areas
+  resources :forum_posts, :except =>  [:new, :index,:show] 
+  resources :forum_threads, :except =>  [:new, :index] 
+  resources :forum_areas 
+  get "forum_posts/:id/new" => "forum_posts#new"
+  
+  get "forum_threads/:id/new" => "forum_threads#new"
+  get "forum_threads/:id/show" => "forum_threads#show"
+ 
+  
+  root :to => "forum_areas#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,7 +62,6 @@ GoSeite::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'forum_areas#index'
 
   # See how all your routes lay out with "rake routes"
 
