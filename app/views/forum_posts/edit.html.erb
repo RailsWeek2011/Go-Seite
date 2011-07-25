@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @forum_post %> |
-<%= link_to 'Back', forum_posts_path %>
+<%= link_to 'Back', {:controller => "forum_threads", :action => "show", :id => @forum_post.forum_thread} %>

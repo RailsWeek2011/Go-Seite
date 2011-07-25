@@ -19,11 +19,8 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div>
-  <div class="field">
-    <%= f.label :forum_thread_id %><br />
-    <%= f.number_field :forum_thread_id %>
-  </div>
   <div class="actions">
+    <%= f.hidden_field :forum_thread_id  %>
     <%= f.submit %>
   </div>
 <% end %>

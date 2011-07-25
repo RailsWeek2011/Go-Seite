@@ -1,25 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @forum_thread.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @forum_thread.content %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @forum_thread.user_id %>
-</p>
-
-<p>
-  <b>Forum area:</b>
-  <%= @forum_thread.forum_area_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
-<%= link_to 'Back', forum_threads_path %>
+<h1><%= @forum_thread.title %></h1>
+<p><%= @forum_thread.content %></p>
+<p>Geschrieben von <b><%= @forum_thread.user_id %></b> am
+<b><%= @forum_thread.created_at %></b> 
+<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %></p>
+<hr />
+<% @forum_thread.forum_posts.each do |post| %>
+  <p><%= post.content %></p>
+  <p>Geschrieben von <b><%= post.user_id %></b> am
+  <b><%= post.created_at %></b> 
+  <%= link_to 'Edit', edit_forum_post_path(post) %> | 
+  <%= link_to 'Destroy', post , confirm: 'Are you sure?', method: :delete %></p>
+<hr />
+<% end %>
+<%= link_to 'Antworten', {:controller => "forum_posts", :action => "new", :id => params[:id]} %>
+<%= link_to 'Back', {:controller => "forum_areas", :action => "show", :id => @forum_thread.forum_area} %>
