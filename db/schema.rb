@@ -10,7 +10,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110721122338) do
+ActiveRecord::Schema.define(:version => 20110726072538) do
+
+  create_table "tournament_informations", :force => true do |t|
+    t.text     "anfahrt"
+    t.text     "ausschreibung"
+    t.text     "kontakt"
+    t.datetime "voranmeldung"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tournament_players", :force => true do |t|
+    t.string   "name"
+    t.string   "vorname"
+    t.string   "email"
+    t.boolean  "dgob"
+    t.boolean  "studi"
+    t.string   "rank"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tournament_results", :force => true do |t|
+    t.integer  "spieler1"
+    t.integer  "spieler2"
+    t.integer  "ergebnis"
+    t.integer  "runde"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

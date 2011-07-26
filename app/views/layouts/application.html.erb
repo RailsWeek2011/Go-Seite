@@ -1,26 +1,38 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>GoSeite</title>
-  <%= stylesheet_link_tag    "application" %>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+	<title>GO-Club Giessen - </title>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class= "notice"><%= notice %></p>
-  <p class= "alert"><%= alert %></p>
-  <%= yield %>
-
-<div id="user_nav">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-</div>
-
-
-
+<center>
+	<div id="div_Container">
+		<div id="div_Logo">
+			<%= image_tag("Logo.png", {:border =>0 }) %></div>
+		<div id="div_Platzhalter_2"></div>
+		<div id="div_Content_Box">
+			<div id="div_Menue">
+				<%= image_tag("Start.png",{:border => 0,:alt => "Start"}) %>
+			</div>
+			<div id="div_Ueberschrift"></div>
+			<div id="div_Rumpf">
+				<div id="div_Rahmen_Links"></div>
+				<div id="div_Inhalt"><%= yield %>
+				</div>
+				<div id="div_Rahmen_Rechts"></div>
+			</div>
+			<div id="div_Rahmen_Unten">
+				<b>Besucher</b> Heute:  | Gesamt:  | Gestern:  | Letzte Woche: <br /><br />
+				Design Copyright &copy; 2008-2009 <%= mail_to "v.blos@gmx.de", "Valerian Blos" %> | Copyright &copy; Florian Bogenhard<br /><?=$html->link('Impressum',array('controller'=>'sites','action'=>'','imp'),null,null,false)?>
+                                <?=$html->link($user['username'],array('controller'=>'users','action'=>'logout'))?>
+                        </div>
+		</div>
+		<div id="div_Platzhalter_4"></div>
+	</div>
+</center>
 </body>
 </html>

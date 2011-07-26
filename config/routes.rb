@@ -1,11 +1,15 @@
-GoSeite::Application.routes.draw do
+GoSeite::Application.routes.draw do 
   resources :tournament_players
-
+	
   resources :tournament_results
 
   resources :tournament_informations
-
-  devise_for :users
+  get "tournament_informations/:id/ausschreibung" => "tournament_informations#ausschreibung"
+  get "tournament_informations/ausschreibung" => "tournament_informations#ausschreibung"
+  get "tournament_informations/:id/anfahrt" => "tournament_informations#anfahrt"
+  get "tournament_informations/:id/kontakt" => "tournament_informations#kontakt"
+  
+	devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

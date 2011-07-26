@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Anfahrt</th>
-    <th>Teilnehmerbedingung</th>
+    <th>Ausschreibung</th>
     <th>Kontakt</th>
     <th>Voranmeldung</th>
     <th></th>
@@ -14,7 +14,7 @@
 <% @tournament_informations.each do |tournament_information| %>
   <tr>
     <td><%= tournament_information.anfahrt %></td>
-    <td><%= tournament_information.teilnehmerbedingung %></td>
+    <td><%= tournament_information.ausschreibung %></td>
     <td><%= tournament_information.kontakt %></td>
     <td><%= tournament_information.voranmeldung %></td>
     <td><%= link_to 'Show', tournament_information %></td>
