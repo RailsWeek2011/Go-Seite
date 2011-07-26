@@ -173,7 +173,7 @@ label {
 	display: block;
 	font-size: 110%;
 	padding-right: 20px;
-   margin:0px;
+	margin:0px;
 }
 input, textarea {
 	clear: both;
@@ -181,7 +181,8 @@ input, textarea {
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
 	padding: 0px;
 	width: 75%;
-   margin:0px 0px 5px 0px;
+	position: relative;
+        margin:0px 0px 5px 0px;
 }
 textarea{
 	height:45px;

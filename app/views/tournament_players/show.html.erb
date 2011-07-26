@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @tournament_player.name %>
+</p>
+
+<p>
+  <b>Vorname:</b>
+  <%= @tournament_player.vorname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @tournament_player.email %>
+</p>
+
+<p>
+  <b>Dgob:</b>
+  <%= @tournament_player.dgob %>
+</p>
+
+<p>
+  <b>Studi:</b>
+  <%= @tournament_player.studi %>
+</p>
+
+<p>
+  <b>Rank:</b>
+  <%= @tournament_player.rank %>
+</p>
+
+
+<%= link_to 'Edit', edit_tournament_player_path(@tournament_player) %> |
+<%= link_to 'Back', tournament_players_path %>
