@@ -1,5 +1,19 @@
 GoSeite::Application.routes.draw do
+  resources :german_go_leagues
+
   devise_for :users
+
+  resources :forum_posts, :except =>  [:new, :index,:show] 
+  resources :forum_threads, :except =>  [:new, :index] 
+  resources :forum_areas 
+  get "forum_posts/:id/new" => "forum_posts#new"
+  
+  get "forum_threads/:id/new" => "forum_threads#new"
+  get "forum_threads/:id/show" => "forum_threads#show"
+ 
+  
+  #root :to => "forum_areas#index"
+  root :to => "german_go_leagues#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  <title>GO-Club Giessen - </title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <center>
+    <div id="div_Container">
+      <div id="div_Logo">
+        <%= image_tag("Logo.png", {:border =>0 }) %>
+      </div>
+      <div id="div_Platzhalter_2"></div>
+      <div id="div_Content_Box">
+	<div id="div_Menue">
+	  <%= image_tag("Start.png",{:border => 0,:alt => "Start"}) %>
+	</div>
+	<div id="div_Ueberschrift"><?=$title_for_layout?></div>
+	<div id="div_Rumpf">
+	<div id="div_Rahmen_Links"></div>
+	<div id="div_Inhalt">
+
+	  <p class= "notice"><%= notice %></p>
+	  <p class= "alert"><%= alert %></p>
+	  <%= yield %>
+
+	  <div id="user_nav">
+	    <% if user_signed_in? %>
+	      Signed in as <%= current_user.email %>. Not you?
+	      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+	    <% else %>
+	      <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+	    <% end %>
+	  </div>
+	  <div id="div_Rahmen_Rechts"></div>
+	</div>
+      </div>
+      <div id="div_Platzhalter_4"></div>
+    </div>
+  </center>
+</body>
+</html>

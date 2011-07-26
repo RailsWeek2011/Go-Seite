@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  brett: 1
+  spieler1: MyString
+  spieler2: MyString
+  datum: 2011-07-26 11:56:21
+  datei: MyString
+
+two:
+  brett: 1
+  spieler1: MyString
+  spieler2: MyString
+  datum: 2011-07-26 11:56:21
+  datei: MyString

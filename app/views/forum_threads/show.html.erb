@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @forum_thread.title %></h1>
+<p><%= @forum_thread.content %></p>
+<p>Geschrieben von <b><%= @forum_thread.user_id %></b> am
+<b><%= @forum_thread.created_at %></b>
+
+<% if can? :update, @forum_thread %> 
+  <%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %></p>
+<% end %>
+<hr />
+<% @forum_thread.forum_posts.each do |post| %>
+  <p><%= post.content %></p>
+  <p>Geschrieben von <b><%= post.user_id %></b> am
+  <b><%= post.created_at %></b> 
+
+  <% if can? :update, @forum_thread %> 
+    <%= link_to 'Edit', edit_forum_post_path(post) %> | 
+  <% end %>
+  <% if can? :destroy, @forum_thread %> 
+    <%= link_to 'Destroy', post , confirm: 'Are you sure?', method: :delete %></p>
+  <% end %>
+
+<hr />
+<% end %>
+<%= link_to 'Antworten', {:controller => "forum_posts", :action => "new", :id => params[:id]} %>
+<%= link_to 'Back', {:controller => "forum_areas", :action => "show", :id => @forum_thread.forum_area} %>

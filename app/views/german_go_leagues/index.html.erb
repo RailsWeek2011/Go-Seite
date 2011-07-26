@@ -1,0 +1,30 @@
+<h1>Deutscher Go Bund</h1>
+<h2>Spieleübersicht der Bundesliga</h2>
+
+<table>
+  <tr>
+    <th>Brett</th>
+    <th>Spieler 1</th>
+    <th>Spieler 2</th>
+    <th>Datum</th>
+    <th>Datei</th>
+  </tr>
+
+<% @german_go_leagues.each do |german_go_league| %>
+  <tr>
+    <td><%= german_go_league.brett %></td>
+    <td><%= german_go_league.spieler1 %></td>
+    <td><%= german_go_league.spieler2 %></td>
+    <td><%= german_go_league.datum %></td>
+    <td><%= link_to 'DL', german_go_league.datei.url %></td>
+    <% if can? :manage, german_go_league %>
+      <td><%= link_to 'Edit', edit_german_go_league_path(german_go_league) %></td>
+      <td><%= link_to 'Destroy', german_go_league, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New German go league', new_german_go_league_path %>

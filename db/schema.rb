@@ -10,7 +10,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110721122338) do
+ActiveRecord::Schema.define(:version => 20110726095611) do
+
+  create_table "forum_areas", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forum_posts", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "forum_thread_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forum_threads", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "forum_area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "german_go_leagues", :force => true do |t|
+    t.integer  "brett"
+    t.string   "spieler1"
+    t.string   "spieler2"
+    t.datetime "datum"
+    t.string   "datei"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -32,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20110721122338) do
     t.string   "Land"
     t.boolean  "DGoB"
     t.boolean  "studi"
+    t.integer  "roles_mask"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

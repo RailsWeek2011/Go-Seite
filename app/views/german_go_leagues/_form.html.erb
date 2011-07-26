@@ -1,0 +1,38 @@
+<%= form_for @german_go_league, :html => {:multipart => true, :method => :post} do |f| %>
+
+  <% if @german_go_league.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@german_go_league.errors.count, "error") %> prohibited this german_go_league from being saved:</h2>
+
+      <ul>
+      <% @german_go_league.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :brett %>
+    <%= f.number_field :brett %>
+  </div>
+  <div class="field">
+    <%= f.label :spieler1 %>
+    <%= f.text_field :spieler1 %>
+  </div>
+  <div class="field">
+    <%= f.label :spieler2 %>
+    <%= f.text_field :spieler2 %>
+  </div>
+  <div class="field">
+    <%= f.label :datum %>
+    <%= f.datetime_select :datum %>
+  </div>
+  <div class="field">
+    <%= f.label :datei %>
+    <%= f.file_field :datei %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
