@@ -1,4 +1,6 @@
 GoSeite::Application.routes.draw do
+  resources :german_go_leagues
+
   devise_for :users
 
   resources :forum_posts, :except =>  [:new, :index,:show] 
