@@ -1,8 +1,9 @@
 GoSeite::Application.routes.draw do 
 	get "tournament_players/teilnehmer" => "tournament_players#teilnehmer"
   resources :tournament_players
-  
-  resources :tournament_results
+
+	get "tournament_results/:id/:player/edit" => "tournament_results#edit"
+  resources :tournament_results, :except =>  [:edit,:update] 
 
 	constraints(:id => /[0-9]+/) do
   	resources :tournament_informations

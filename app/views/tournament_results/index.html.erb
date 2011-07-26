@@ -17,7 +17,7 @@
   </tr>
 		<% round.each do |tournament_result| %>
 			<tr>
-				<td><%= @players[tournament_result.spieler1].name %>, <%= @players[tournament_result.spieler1].vorname %></td>			
+				<td><%= link_to @players[tournament_result.spieler1].name.+(', '.+(@players[tournament_result.spieler1].vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => 1 %></td>			
 				<td>
 					<% case (tournament_result.ergebnis)
 						when 1					
@@ -28,7 +28,7 @@
 					<% else %>
 						N/A
 					<% end %></td>
-				<td><%= @players[tournament_result.spieler2].name %>, <%= @players[tournament_result.spieler2].vorname %></td>
+				<td><%= link_to @players[tournament_result.spieler2].name.+(', '.+(@players[tournament_result.spieler2].vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => "2" %></td>
 			</tr>
 		<% end %>
 	<% end %>

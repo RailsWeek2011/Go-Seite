@@ -13,7 +13,6 @@ class TournamentResultsController < ApplicationController
 			if round.count == 0
 				inLoop = false
 			else
-				#round[i-1].sp1 = TournamentPlayer.find round[i-1].spieler1
 				@rounds.push round  
 			end
 			i = i+1
@@ -21,62 +20,54 @@ class TournamentResultsController < ApplicationController
   end
 
   # GET /tournament_results/1
-  # GET /tournament_results/1.json
   def show
     @tournament_result = TournamentResult.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @tournament_result }
-    end
   end
 
   # GET /tournament_results/new
-  # GET /tournament_results/new.json
   def new
     @tournament_result = TournamentResult.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @tournament_result }
-    end
   end
 
   # GET /tournament_results/1/edit
-  def edit
-    @tournament_result = TournamentResult.find(params[:id])
+  def edit	
+		if TournamentResult.exists?(params[:id])
+			if params[:player].to_i == 1 || params[:player].to_i == 2
+		  	tournament_result = TournamentResult.find(params[:id])
+				if TournamentResult.where("runde = ?",tournament_result.runde+1) == []
+					tournament_result.ergebnis = params[:player]
+					tournament_result.save
+				end
+			end
+		end
+		redirect_to :controller => "tournament_results", :action => "index"
   end
 
   # POST /tournament_results
-  # POST /tournament_results.json
   def create
     @tournament_result = TournamentResult.new(params[:tournament_result])
 
-    respond_to do |format|
-      if @tournament_result.save
-        format.html { redirect_to @tournament_result, notice: 'Tournament result was successfully created.' }
-        format.json { render json: @tournament_result, status: :created, location: @tournament_result }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @tournament_result.errors, status: :unprocessable_entity }
-      end
+    if @tournament_result.save
+      redirect_to @tournament_result, notice: 'Tournament result was successfully created.'
+    else
+      render action: "new"
     end
   end
 
-  # PUT /tournament_results/1
-  # PUT /tournament_results/1.json
+  # GET /tournament_results/1
   def update
-    @tournament_result = TournamentResult.find(params[:id])
 
-    respond_to do |format|
-      if @tournament_result.update_attributes(params[:tournament_result])
-        format.html { redirect_to @tournament_result, notice: 'Tournament result was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @tournament_result.errors, status: :unprocessable_entity }
-      end
-    end
+		
+
+  #  	@tournament_result = TournamentResult.find(params[:id])
+	#		
+	#		  if @tournament_result.update_attributes(params[:tournament_result])
+	#			  redirect_to @tournament_result, notice: 'Tournament result was successfully updated.'
+	#		  else
+	#		    render action: "edit"
+	#			end
   end
 
   # DELETE /tournament_results/1
