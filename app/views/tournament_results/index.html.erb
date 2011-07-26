@@ -1,0 +1,29 @@
+<h1>Listing tournament_results</h1>
+
+<table>
+  <tr>
+    <th>Spieler1</th>
+    <th>Spieler2</th>
+    <th>Ergebnis</th>
+    <th>Runde</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tournament_results.each do |tournament_result| %>
+  <tr>
+    <td><%= tournament_result.spieler1 %></td>
+    <td><%= tournament_result.spieler2 %></td>
+    <td><%= tournament_result.ergebnis %></td>
+    <td><%= tournament_result.runde %></td>
+    <td><%= link_to 'Show', tournament_result %></td>
+    <td><%= link_to 'Edit', edit_tournament_result_path(tournament_result) %></td>
+    <td><%= link_to 'Destroy', tournament_result, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tournament result', new_tournament_result_path %>

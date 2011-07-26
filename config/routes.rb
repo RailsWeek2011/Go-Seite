@@ -1,4 +1,10 @@
 GoSeite::Application.routes.draw do
+  resources :tournament_players
+
+  resources :tournament_results
+
+  resources :tournament_informations
+
   devise_for :users
 
   # The priority is based upon order of creation:

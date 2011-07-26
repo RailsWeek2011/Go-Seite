@@ -1,0 +1,33 @@
+<%= form_for(@tournament_information) do |f| %>
+  <% if @tournament_information.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tournament_information.errors.count, "error") %> prohibited this tournament_information from being saved:</h2>
+
+      <ul>
+      <% @tournament_information.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :anfahrt %><br />
+    <%= f.text_area :anfahrt %>
+  </div>
+  <div class="field">
+    <%= f.label :teilnehmerbedingung %><br />
+    <%= f.text_area :teilnehmerbedingung %>
+  </div>
+  <div class="field">
+    <%= f.label :kontakt %><br />
+    <%= f.text_area :kontakt %>
+  </div>
+  <div class="field">
+    <%= f.label :voranmeldung %><br />
+    <%= f.datetime_select :voranmeldung %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

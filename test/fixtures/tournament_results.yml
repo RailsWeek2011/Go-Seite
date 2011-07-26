@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  spieler1: 1
+  spieler2: 1
+  ergebnis: 1
+  runde: 1
+
+two:
+  spieler1: 1
+  spieler2: 1
+  ergebnis: 1
+  runde: 1

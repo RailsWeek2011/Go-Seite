@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  anfahrt: MyText
+  teilnehmerbedingung: MyText
+  kontakt: MyText
+  voranmeldung: 2011-07-26 09:24:40
+
+two:
+  anfahrt: MyText
+  teilnehmerbedingung: MyText
+  kontakt: MyText
+  voranmeldung: 2011-07-26 09:24:40

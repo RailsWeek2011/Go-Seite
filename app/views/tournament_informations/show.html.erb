@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Anfahrt:</b>
+  <%= @tournament_information.anfahrt %>
+</p>
+
+<p>
+  <b>Teilnehmerbedingung:</b>
+  <%= @tournament_information.teilnehmerbedingung %>
+</p>
+
+<p>
+  <b>Kontakt:</b>
+  <%= @tournament_information.kontakt %>
+</p>
+
+<p>
+  <b>Voranmeldung:</b>
+  <%= @tournament_information.voranmeldung %>
+</p>
+
+
+<%= link_to 'Edit', edit_tournament_information_path(@tournament_information) %> |
+<%= link_to 'Back', tournament_informations_path %>

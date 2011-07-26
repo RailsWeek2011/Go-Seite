@@ -1,0 +1,29 @@
+<h1>Listing tournament_informations</h1>
+
+<table>
+  <tr>
+    <th>Anfahrt</th>
+    <th>Teilnehmerbedingung</th>
+    <th>Kontakt</th>
+    <th>Voranmeldung</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tournament_informations.each do |tournament_information| %>
+  <tr>
+    <td><%= tournament_information.anfahrt %></td>
+    <td><%= tournament_information.teilnehmerbedingung %></td>
+    <td><%= tournament_information.kontakt %></td>
+    <td><%= tournament_information.voranmeldung %></td>
+    <td><%= link_to 'Show', tournament_information %></td>
+    <td><%= link_to 'Edit', edit_tournament_information_path(tournament_information) %></td>
+    <td><%= link_to 'Destroy', tournament_information, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tournament information', new_tournament_information_path %>

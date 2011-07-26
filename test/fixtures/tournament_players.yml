@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  vorname: MyString
+  email: MyString
+  dgob: false
+  studi: false
+  rank: MyString
+
+two:
+  name: MyString
+  vorname: MyString
+  email: MyString
+  dgob: false
+  studi: false
+  rank: MyString
