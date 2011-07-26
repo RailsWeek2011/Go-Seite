@@ -10,10 +10,10 @@
 <hr />
 <% @forum_thread.forum_posts.each do |post| %>
   <p><%= post.content %></p>
-  <p>Geschrieben von <b><%= post.user_id %></b> am
+  <p>Geschrieben von <b><%= post.user.Name %></b> am
   <b><%= post.created_at %></b> 
 
-  <% if can? :update, @forum_thread %> 
+  <% if can? :update, post %> 
     <%= link_to 'Edit', edit_forum_post_path(post) %> | 
   <% end %>
   <% if can? :destroy, @forum_thread %> 

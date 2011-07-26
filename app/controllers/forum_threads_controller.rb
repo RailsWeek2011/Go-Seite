@@ -14,8 +14,8 @@ class ForumThreadsController < ApplicationController
 
   # GET /forum_threads/new
   def new
-    #@forum_thread = ForumThread.new
-    #@forum_thread.forum_area_id = params[:id]
+    @forum_thread = ForumThread.new
+    @forum_thread.forum_area_id = params[:id]
   end
 
   # GET /forum_threads/1/edit
@@ -26,13 +26,12 @@ class ForumThreadsController < ApplicationController
   # POST /forum_threads
   def create
     #@forum_thread = ForumThread.new(params[:forum_thread])
-
-      if @forum_thread.save
-				redirect_to :controller => "forum_threads", :action => "show", :id => @forum_thread, notice: 'Forum thread was successfully created.'
-      else
-        render action: "new"
-      end
-   
+    @forum_thread.user_id = user.id
+    if @forum_thread.save
+      redirect_to :controller => "forum_threads", :action => "show", :id => @forum_thread, notice: 'Forum thread was successfully created.'
+    else
+      render action: "new"
+    end
   end
 
   # PUT /forum_threads/1
@@ -48,11 +47,9 @@ class ForumThreadsController < ApplicationController
   # DELETE /forum_threads/1
   def destroy
     #@forum_thread = ForumThread.find(params[:id])
-		area_id = @forum_thread.id
-		#forum_post = ForumPost.where("forum_thread_id = #{@forum_thread.id}")
-		#forum_post.destroy
+    area_id = @forum_thread.id
 		
     @forum_thread.destroy
-		redirect_to :controller => "forum_areas", :action => "show", :id => area_id
+      redirect_to :controller => "forum_areas", :action => "show", :id => area_id
   end
 end

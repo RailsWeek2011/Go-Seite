@@ -15,7 +15,7 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/new
   def new
     @forum_post = ForumPost.new
-		@forum_post.forum_thread_id = params[:id]
+    @forum_post.forum_thread_id = params[:id]
   end
 
   # GET /forum_posts/1/edit
@@ -26,11 +26,12 @@ class ForumPostsController < ApplicationController
   # POST /forum_posts
   def create
     @forum_post = ForumPost.new(params[:forum_post])
+    @forum_post.user_id = current_user.id
 
     if @forum_post.save
       redirect_to :controller => "forum_threads", :action => "show", :id => @forum_post.forum_thread_id, notice: 'Forum post was successfully created.'
     else 
- 			render action: "new" 
+      render action: "new" 
     end
   end
 
