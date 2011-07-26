@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :Name, :email, :password, :password_confirmation, :remember_me, :roles
+  #mount_uploader :avatar, AvatarUploader
 
   def role? (role)
     roles.include?(role.to_s)

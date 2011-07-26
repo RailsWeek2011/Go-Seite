@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110724162302) do
+ActiveRecord::Schema.define(:version => 20110726095611) do
 
   create_table "forum_areas", :force => true do |t|
     t.string   "title"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20110724162302) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "forum_area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "german_go_leagues", :force => true do |t|
+    t.integer  "brett"
+    t.string   "spieler1"
+    t.string   "spieler2"
+    t.datetime "datum"
+    t.string   "datei"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

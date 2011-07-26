@@ -12,7 +12,8 @@ GoSeite::Application.routes.draw do
   get "forum_threads/:id/show" => "forum_threads#show"
  
   
-  root :to => "forum_areas#index"
+  #root :to => "forum_areas#index"
+  root :to => "german_go_leagues#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

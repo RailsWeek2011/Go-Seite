@@ -1,4 +1,7 @@
 class GermanGoLeaguesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+  load_and_authorize_resource 
+
   # GET /german_go_leagues
   # GET /german_go_leagues.json
   def index
@@ -13,7 +16,7 @@ class GermanGoLeaguesController < ApplicationController
   # GET /german_go_leagues/1
   # GET /german_go_leagues/1.json
   def show
-    @german_go_league = GermanGoLeague.find(params[:id])
+    #@german_go_league = GermanGoLeague.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,7 @@ class GermanGoLeaguesController < ApplicationController
   # GET /german_go_leagues/new
   # GET /german_go_leagues/new.json
   def new
-    @german_go_league = GermanGoLeague.new
+    #@german_go_league = GermanGoLeague.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +37,13 @@ class GermanGoLeaguesController < ApplicationController
 
   # GET /german_go_leagues/1/edit
   def edit
-    @german_go_league = GermanGoLeague.find(params[:id])
+    #@german_go_league = GermanGoLeague.find(params[:id])
   end
 
   # POST /german_go_leagues
   # POST /german_go_leagues.json
   def create
-    @german_go_league = GermanGoLeague.new(params[:german_go_league])
+    #@german_go_league = GermanGoLeague.new(params[:german_go_league])
 
     respond_to do |format|
       if @german_go_league.save
@@ -56,7 +59,7 @@ class GermanGoLeaguesController < ApplicationController
   # PUT /german_go_leagues/1
   # PUT /german_go_leagues/1.json
   def update
-    @german_go_league = GermanGoLeague.find(params[:id])
+    #@german_go_league = GermanGoLeague.find(params[:id])
 
     respond_to do |format|
       if @german_go_league.update_attributes(params[:german_go_league])
@@ -72,7 +75,7 @@ class GermanGoLeaguesController < ApplicationController
   # DELETE /german_go_leagues/1
   # DELETE /german_go_leagues/1.json
   def destroy
-    @german_go_league = GermanGoLeague.find(params[:id])
+    #@german_go_league = GermanGoLeague.find(params[:id])
     @german_go_league.destroy
 
     respond_to do |format|
