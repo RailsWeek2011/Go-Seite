@@ -1,29 +1,35 @@
-<h1>Listing tournament_results</h1>
+<p>
+<%= link_to "Neue Runde", :controller => "tournament_results", :action => "new" %> | 
+</p>
 
 <table>
+	<% i=0
+		@rounds.each do |round| 
+		i = i+1 
+	%>
+	<tr>
+		<th colspan ="3"> Runde <%= i %></th>
+	</tr>
   <tr>
     <th>Spieler1</th>
-    <th>Spieler2</th>
     <th>Ergebnis</th>
-    <th>Runde</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Spieler2</th>
   </tr>
-
-<% @tournament_results.each do |tournament_result| %>
-  <tr>
-    <td><%= tournament_result.spieler1 %></td>
-    <td><%= tournament_result.spieler2 %></td>
-    <td><%= tournament_result.ergebnis %></td>
-    <td><%= tournament_result.runde %></td>
-    <td><%= link_to 'Show', tournament_result %></td>
-    <td><%= link_to 'Edit', edit_tournament_result_path(tournament_result) %></td>
-    <td><%= link_to 'Destroy', tournament_result, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+		<% round.each do |tournament_result| %>
+			<tr>
+				<td><%= @players[tournament_result.spieler1].name %>, <%= @players[tournament_result.spieler1].vorname %></td>			
+				<td>
+					<% case (tournament_result.ergebnis)
+						when 1					
+					%>
+						<b> 1 : 0 </b>
+					<% when 2 %>
+						<b> 0 : 1 </b>
+					<% else %>
+						N/A
+					<% end %></td>
+				<td><%= @players[tournament_result.spieler2].name %>, <%= @players[tournament_result.spieler2].vorname %></td>
+			</tr>
+		<% end %>
+	<% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Tournament result', new_tournament_result_path %>

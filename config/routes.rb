@@ -1,14 +1,22 @@
 GoSeite::Application.routes.draw do 
+	get "tournament_players/teilnehmer" => "tournament_players#teilnehmer"
   resources :tournament_players
-	
+  
   resources :tournament_results
 
-  resources :tournament_informations
-  get "tournament_informations/:id/ausschreibung" => "tournament_informations#ausschreibung"
-  get "tournament_informations/ausschreibung" => "tournament_informations#ausschreibung"
-  get "tournament_informations/:id/anfahrt" => "tournament_informations#anfahrt"
-  get "tournament_informations/:id/kontakt" => "tournament_informations#kontakt"
-  
+	constraints(:id => /[0-9]+/) do
+  	resources :tournament_informations
+	end
+
+	constraints(:id => /[A-Z][a-z]+/) do
+  	get "tournament_informations/ausschreibung"
+  	get "tournament_informations/:id/ausschreibung" => "tournament_informations#ausschreibung"
+  	get "tournament_informations/anfahrt"
+		get "tournament_informations/:id/anfahrt" => "tournament_informations#anfahrt"
+  	get "tournament_informations/kontakt"
+  	get "tournament_informations/:id/kontakt" => "tournament_informations#kontakt"
+	end
+
 	devise_for :users
 
   # The priority is based upon order of creation:

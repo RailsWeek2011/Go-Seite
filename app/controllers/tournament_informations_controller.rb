@@ -6,20 +6,36 @@ class TournamentInformationsController < ApplicationController
 
   # GET /tournament_informations/1
   def show
-    @tournament_information = TournamentInformation.find(params[:id])
-    
+		@tournament_information = TournamentInformation.find(params[:id])
   end
 
   def ausschreibung
-    @information = TournamentInformation.find(params[:id]).ausschreibung
+		@title = "Turnier Ausschreibung"
+    if params[:id] == nil
+			@information = TournamentInformation.last.ausschreibung
+		else
+    	@information = TournamentInformation.find(params[:id]).ausschreibung
+		end
 		render action: "information"
   end
+
 	def anfahrt
-    @information = TournamentInformation.find(params[:id]).anfahrt
+		@title = "Turnier Anfahrt"
+    if params[:id] == nil
+			@information = TournamentInformation.last.anfahrt
+		else
+    	@information = TournamentInformation.find(params[:id]).anfahrt
+		end
 		render action: "information"
   end
+
   def kontakt
-    @information = TournamentInformation.find(params[:id]).kontakt
+		@title = "Turnier Kontakt"
+    if params[:id] == nil
+			@information = TournamentInformation.last.kontakt
+		else
+    	@information = TournamentInformation.find(params[:id]).kontakt
+		end
 		render action: "information"
   end
 

@@ -1,23 +1,13 @@
-#encoding: utf-8
 class TournamentResultsController < ApplicationController
   # GET /tournament_results
+  # GET /tournament_results.json
   def index
-		@title = "Ergebnis Übersicht"
     @tournament_results = TournamentResult.all
-		@players = TournamentPlayer.all
-		@rounds = []
-		i = 1
-		inLoop = true
-		begin 
-			round = TournamentResult.where("runde = ?",i)
-			if round.count == 0
-				inLoop = false
-			else
-				#round[i-1].sp1 = TournamentPlayer.find round[i-1].spieler1
-				@rounds.push round  
-			end
-			i = i+1
-		end while inLoop
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tournament_results }
+    end
   end
 
   # GET /tournament_results/1
