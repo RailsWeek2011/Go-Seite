@@ -1,6 +1,7 @@
 class TournamentInformationsController < ApplicationController
   # GET /tournament_informations
   def index
+		@title = "Turnierverwaltung"
     @tournament_informations = TournamentInformation.all
   end
 
@@ -46,6 +47,7 @@ class TournamentInformationsController < ApplicationController
 
   # GET /tournament_informations/1/edit
   def edit
+		@title = "Turnier bearbeiten"
     @tournament_information = TournamentInformation.find(params[:id])
   end
 
@@ -54,7 +56,7 @@ class TournamentInformationsController < ApplicationController
     @tournament_information = TournamentInformation.new(params[:tournament_information])
 
     if @tournament_information.save
-      redirect_to @tournament_information, notice: 'Tournament information was successfully created.'
+      redirect_to :controller=>"tournament_informations", :action => "index", notice: 'Turnier wurde Erstellt.'
     else
       render action: "new"
     end
@@ -65,7 +67,7 @@ class TournamentInformationsController < ApplicationController
     @tournament_information = TournamentInformation.find(params[:id])
 
     if @tournament_information.update_attributes(params[:tournament_information])
-      redirect_to @tournament_information, notice: 'Tournament information was successfully updated.'
+      redirect_to :controller => "tournament_informations", :action => "index" , notice: 'Turnier wurde erfolgreich Bearbeitet.'
     else
       render action: "edit"
     end

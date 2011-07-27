@@ -1,12 +1,15 @@
+#encoding: utf-8
 class TournamentPlayersController < ApplicationController
   # GET /tournament_players
   def index
+		@title = "Angemeldete Teilnehmer"
     @tournament_players = TournamentPlayer.all
   end
 
   # GET /tournament_players/1
   def show
     @tournament_player = TournamentPlayer.find(params[:id])
+		@title ="Teilnehmer: #{@tournament_player.name}, #{@tournament_player.vorname}"
   end
 
   def teilnehmer
@@ -17,12 +20,14 @@ class TournamentPlayersController < ApplicationController
 
   # GET /tournament_players/new
   def new
+		@title = "Neuer Teilnehmer"
     @tournament_player = TournamentPlayer.new
   end
 
   # GET /tournament_players/1/edit
   def edit
     @tournament_player = TournamentPlayer.find(params[:id])
+		@title ="Teilnehmer: #{@tournament_player.name}, #{@tournament_player.vorname}"
   end
 
   # POST /tournament_players
@@ -30,7 +35,7 @@ class TournamentPlayersController < ApplicationController
     @tournament_player = TournamentPlayer.new(params[:tournament_player])
 
     if @tournament_player.save
-      redirect_to :controlelr => "tournament_players",:action => "teilnehmer" , notice: 'Tournament player was successfully created.'
+      redirect_to :controlelr => "tournament_players",:action => "teilnehmer" , notice: 'Sie wurden Erfolgreich für das Turnier Eingetragen.'
     else
       render action: "new" 
     end
@@ -53,6 +58,12 @@ class TournamentPlayersController < ApplicationController
     @tournament_player.destroy
 		
 		redirect_to tournament_players_url
-
   end
+
+	# DELETE /tournament_players/all
+	def destroy_all
+		TournamentPlayer.destroy_all
+
+		redirect_to tournament_players_url
+	end
 end

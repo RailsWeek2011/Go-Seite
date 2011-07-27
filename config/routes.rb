@@ -1,12 +1,15 @@
 GoSeite::Application.routes.draw do 
 	get "tournament_players/teilnehmer" => "tournament_players#teilnehmer"
+	delete "tournament_players/destroy_all"
   resources :tournament_players
 
 	get "tournament_results/:id/:player/edit" => "tournament_results#edit"
-  resources :tournament_results, :except =>  [:edit,:update] 
+	delete "tournament_results/destroy_all"
+	delete "tournament_results/destroy"
+	resources :tournament_results, :except =>  [:edit,:update,:destroy] 
 
 	constraints(:id => /[0-9]+/) do
-  	resources :tournament_informations
+  	resources :tournament_informations, :except => [:show]
 	end
 
 	constraints(:id => /[A-Z][a-z]+/) do

@@ -6,6 +6,7 @@ class TournamentResultsController < ApplicationController
     @tournament_results = TournamentResult.all
 		@players = TournamentPlayer.all
 		@rounds = []
+		@gewinner = nil
 		i = 1
 		inLoop = true
 		begin 
@@ -17,6 +18,15 @@ class TournamentResultsController < ApplicationController
 			end
 			i = i+1
 		end while inLoop
+		
+		if @rounds.count >=1 && @rounds.last.count == 1
+			case @rounds.last.last.ergebnis
+					when 1
+						@gewinner = @rounds.last.last.spieler1
+					when 2
+						@gewinner = @rounds.last.last.spieler2
+				end
+		end
   end
 
   # GET /tournament_results/1
@@ -27,10 +37,47 @@ class TournamentResultsController < ApplicationController
 
   # GET /tournament_results/new
   def new
-    @tournament_result = TournamentResult.new
-
+		round = 1	
+		
+		if TournamentResult.count == 0
+			players = TournamentPlayer.all
+		else
+			round = TournamentResult.last.runde
+			games_all = TournamentResult.where("runde = ?",round)
+			round = round + 1
+			players = []
+			games_all.each do |game|
+				case game.ergebnis
+					when 1
+						players.push game.spieler1
+					when 2
+						players.push game.spieler2
+					when 3
+						players.push game.spieler1
+				end
+			end # games_all.each
+		end
+		unless players.count == 1
+			# Matches 
+			begin
+				tr = TournamentResult.new
+				tr.spieler1 = players.sample
+				players.delete tr.spieler1
+				tr.runde = round
+				if players.count >= 1
+					tr.spieler2 = players.sample
+					players.delete tr.spieler2
+					tr.ergebnis = 0
+				else
+					tr.spieler2 = nil
+					tr.ergebnis = 3
+				end
+				tr.save
+			end while not players.count == 0
+		end
+		redirect_to :controller => "tournament_results", :action => "index"
   end
-
+	
   # GET /tournament_results/1/edit
   def edit	
 		if TournamentResult.exists?(params[:id])
@@ -39,6 +86,7 @@ class TournamentResultsController < ApplicationController
 				if TournamentResult.where("runde = ?",tournament_result.runde+1) == []
 					tournament_result.ergebnis = params[:player]
 					tournament_result.save
+				
 				end
 			end
 		end
@@ -56,29 +104,15 @@ class TournamentResultsController < ApplicationController
     end
   end
 
-  # GET /tournament_results/1
-  def update
-
-		
-
-  #  	@tournament_result = TournamentResult.find(params[:id])
-	#		
-	#		  if @tournament_result.update_attributes(params[:tournament_result])
-	#			  redirect_to @tournament_result, notice: 'Tournament result was successfully updated.'
-	#		  else
-	#		    render action: "edit"
-	#			end
-  end
-
   # DELETE /tournament_results/1
-  # DELETE /tournament_results/1.json
   def destroy
-    @tournament_result = TournamentResult.find(params[:id])
-    @tournament_result.destroy
+    @tournament_result = TournamentResult.where("runde = ?",TournamentResult.last.runde)
+    @tournament_result.destroy_all
 
-    respond_to do |format|
-      format.html { redirect_to tournament_results_url }
-      format.json { head :ok }
-    end
+    redirect_to tournament_results_url 
+  end
+	def destroy_all
+    TournamentResult.destroy_all
+    redirect_to tournament_results_url 
   end
 end

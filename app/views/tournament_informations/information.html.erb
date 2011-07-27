@@ -5,8 +5,9 @@
       <li><%= link_to "Teilnehmer Liste", :controller => "tournament_players", :action => "teilnehmer" %></li>      
       <li><%= link_to "Regestrieren", :controller => "tournament_players", :action => "new" %></li>      
       <li><%= link_to "Anfahrt", :controller => "tournament_informations", :action => "anfahrt", :id => 1 %></li>
+			<li><%= link_to "Turnierverwaltung", :action => "index" %></li>
    </ul>
 </div>
 <p>
-  <%= @information %>
+  <%=raw RedCloth.new(@information).to_html %>
 </p>

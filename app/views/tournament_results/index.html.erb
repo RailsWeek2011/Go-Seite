@@ -1,5 +1,8 @@
 <p>
 <%= link_to "Neue Runde", :controller => "tournament_results", :action => "new" %> | 
+<%= link_to "Turnierverwaltung", :controller => "tournament_informations", :action => "index" %> | 
+<%= link_to "Letzte Runde Löschen", {:controller => "tournament_results", :action => "destroy"}, confirm: 'Are you sure?', method: :delete %> | 
+<%= link_to "Alle Runde Löschen", {:controller => "tournament_results", :action => "destroy_all"}, confirm: 'Are you sure?', method: :delete %>
 </p>
 
 <table>
@@ -17,7 +20,15 @@
   </tr>
 		<% round.each do |tournament_result| %>
 			<tr>
-				<td><%= link_to @players[tournament_result.spieler1].name.+(', '.+(@players[tournament_result.spieler1].vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => 1 %></td>			
+				<td>
+					<%
+						if tournament_result.spieler1 == nil
+					%>
+						Error: Spieler nicht gefunden.
+					<% else %>
+						<%= link_to tournament_result.spieler1.name.+(', '.+(tournament_result.spieler1.vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => 1 %>
+					<% end %>
+					</td>			
 				<td>
 					<% case (tournament_result.ergebnis)
 						when 1					
@@ -25,11 +36,29 @@
 						<b> 1 : 0 </b>
 					<% when 2 %>
 						<b> 0 : 1 </b>
+					<% when 3 %>
+						<b> 1 : 0 </b>
 					<% else %>
 						N/A
 					<% end %></td>
-				<td><%= link_to @players[tournament_result.spieler2].name.+(', '.+(@players[tournament_result.spieler2].vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => "2" %></td>
+				<td>
+					<% 
+												
+						if tournament_result.spieler2 == nil 
+							if tournament_result.ergebnis == 3
+							%>
+							Freilos
+							<% else %>
+							Error: Spieler nicht gefunden.
+							<% end %>
+					<% else %>
+						<%= link_to tournament_result.spieler2.name.+(', '.+(tournament_result.spieler2.vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => "2" %>
+					<% end %>
+				</td>
 			</tr>
 		<% end %>
 	<% end %>
 </table>
+<% unless @gewinner == nil %>
+	<center><h2>Gewinner des Turnieres: <b><%= @gewinner.vorname.+(" ".+ @gewinner.name) %></b></h2></center>
+<% end %>
