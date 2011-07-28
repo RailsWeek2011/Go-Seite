@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-<h1><%= @forum_thread.title %></h1>
 <p><%= @forum_thread.content %></p>
-<p>Geschrieben von <b><%= @forum_thread.user_id %></b> am
+<p>Geschrieben von <b><%= @forum_thread.user.Name %></b> am
 <b><%= @forum_thread.created_at %></b>
 
 <% if can? :update, @forum_thread %> 
@@ -14,10 +12,10 @@
   <b><%= post.created_at %></b> 
 
   <% if can? :update, post %> 
-    <%= link_to 'Edit', edit_forum_post_path(post) %> | 
+    <%= link_to 'Edit', edit_forum_post_path(post) %>
   <% end %>
   <% if can? :destroy, @forum_thread %> 
-    <%= link_to 'Destroy', post , confirm: 'Are you sure?', method: :delete %></p>
+     | <%= link_to 'Destroy', post , confirm: 'Are you sure?', method: :delete %></p>
   <% end %>
 
 <hr />

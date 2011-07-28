@@ -4,7 +4,8 @@ class Ability
   def initialize(user)
     user ||= User.new
     can :read, :all
-
+		
+		#can :manage, :all
     if user.role? :admin
       can :manage, :all
     end
@@ -26,6 +27,7 @@ class Ability
       can :create, ForumPost
       can :update, ForumPost, :user_id => user.id
       can :edit, ForumPost, :user_id => user.id
+			#can :manage, TournamentInformation
     end
   end
 

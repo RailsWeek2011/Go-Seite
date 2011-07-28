@@ -1,5 +1,7 @@
 GoSeite::Application.routes.draw do 
-  resources :german_go_leagues
+  devise_for :users
+
+	resources :german_go_leagues
 
   get "tournament_players/teilnehmer" => "tournament_players#teilnehmer"
   delete "tournament_players/destroy_all"
@@ -13,18 +15,17 @@ GoSeite::Application.routes.draw do
   constraints(:id => /[0-9]+/) do
     resources :tournament_informations, :except => [:show]
   end
-
+    
   constraints(:id => /[A-Z][a-z]+/) do
-    get "tournament_informations/ausschreibung"
     get "tournament_informations/:id/ausschreibung" => "tournament_informations#ausschreibung"
-    get "tournament_informations/anfahrt"
+		get "tournament_informations/ausschreibung"
     get "tournament_informations/:id/anfahrt" => "tournament_informations#anfahrt"
-    get "tournament_informations/kontakt"
+		get "tournament_informations/anfahrt"
     get "tournament_informations/:id/kontakt" => "tournament_informations#kontakt"
+		get "tournament_informations/kontakt"
   end
-
-  devise_for :users
-
+		
+  
   resources :forum_posts, :except =>  [:new, :index,:show] 
   resources :forum_threads, :except =>  [:new, :index] 
   resources :forum_areas 

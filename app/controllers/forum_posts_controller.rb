@@ -2,31 +2,23 @@ class ForumPostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   load_and_authorize_resource 
 
-  # GET /forum_posts
-  def index
-    @forum_posts = ForumPost.all
-  end
-
-  # GET /forum_posts/1
-  def show
-    @forum_post = ForumPost.find(params[:id])
-  end
-
   # GET /forum_posts/new
   def new
     @forum_post = ForumPost.new
     @forum_post.forum_thread_id = params[:id]
+		@title = "Antwort erstellen"
   end
 
   # GET /forum_posts/1/edit
   def edit
+		@title = "Antwort bearbeiten"
     @forum_post = ForumPost.find(params[:id])
   end
 
   # POST /forum_posts
   def create
     @forum_post = ForumPost.new(params[:forum_post])
-    @forum_post.user_id = current_user.id
+    @forum_post.user = current_user
 
     if @forum_post.save
       redirect_to :controller => "forum_threads", :action => "show", :id => @forum_post.forum_thread_id, notice: 'Forum post was successfully created.'

@@ -1,20 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @forum_area.title %>
-</p>
 <table>
   <tr>
     <th>Title</th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 <% @forum_area.forum_threads.each do |forum_thread| %>
   <tr>
     <td><%= link_to forum_thread.title, forum_thread_path(forum_thread) %></td>
-    <td></td>
-    <td><%= link_to 'Destroy', forum_thread , confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+			<% if can? :destroy, @forum_thread %>
+				<%= link_to 'Destroy', forum_thread , confirm: 'Are you sure?', method: :delete %>
+			<% end %>		
+		</td>
   </tr>
 <% end %>
 </table>

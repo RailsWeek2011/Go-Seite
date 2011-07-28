@@ -1,5 +1,8 @@
 class TournamentInformationsController < ApplicationController
-  # GET /tournament_informations
+  before_filter :authenticate_user!, :except => [:index, :show,:ausschreibung]
+  load_and_authorize_resource
+
+	# GET /tournament_informations
   def index
 		@title = "Turnierverwaltung"
     @tournament_informations = TournamentInformation.all

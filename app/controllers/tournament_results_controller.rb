@@ -1,5 +1,8 @@
 #encoding: utf-8
 class TournamentResultsController < ApplicationController
+	before_filter :authenticate_user!, :except => [:index, :show]
+  load_and_authorize_resource
+
   # GET /tournament_results
   def index
 		@title = "Ergebnis Übersicht"
