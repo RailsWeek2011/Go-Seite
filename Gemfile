@@ -4,7 +4,6 @@ gem 'rails', '3.1.0.rc4'
 gem 'devise'
 gem 'cancan'
 gem 'carrierwave'
-gem 'carrierwave'
 gem 'RedCloth'
 
 # Bundle edge Rails instead:
