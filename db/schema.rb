@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20110726095611) do
 
   create_table "tournament_informations", :force => true do |t|
     t.text     "anfahrt"
-    t.text     "teilnehmerbedingung"
+    t.text     "ausschreibung"
     t.text     "kontakt"
     t.datetime "voranmeldung"
     t.datetime "created_at"

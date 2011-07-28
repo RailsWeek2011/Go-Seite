@@ -1,0 +1,13 @@
+<div style="border:1px solid gray;float:right;padding:5px;margin-top:10px;">
+   <ul style="padding:0px 0px 0px 15px; margin:0px;">
+      <li><%= link_to "Ausschreibung", :controller => "tournament_informations", :action => "ausschreibung", :id => 1 %></li>
+      <li><%= link_to "Kontakt", :controller => "tournament_informations", :action => "kontakt", :id => 1 %></li>
+      <li><%= link_to "Teilnehmer Liste", :controller => "tournament_players", :action => "teilnehmer" %></li>      
+      <li><%= link_to "Regestrieren", :controller => "tournament_players", :action => "new" %></li>      
+      <li><%= link_to "Anfahrt", :controller => "tournament_informations", :action => "anfahrt", :id => 1 %></li>
+			<li><%= link_to "Turnierverwaltung", :action => "index" %></li>
+   </ul>
+</div>
+<p>
+  <%=raw RedCloth.new(@information).to_html %>
+</p>

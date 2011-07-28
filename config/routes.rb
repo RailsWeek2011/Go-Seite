@@ -1,11 +1,27 @@
-GoSeite::Application.routes.draw do
+GoSeite::Application.routes.draw do 
   resources :german_go_leagues
 
+  get "tournament_players/teilnehmer" => "tournament_players#teilnehmer"
+  delete "tournament_players/destroy_all"
   resources :tournament_players
 
-  resources :tournament_results
+  get "tournament_results/:id/:player/edit" => "tournament_results#edit"
+  delete "tournament_results/destroy_all"
+  delete "tournament_results/destroy"
+  resources :tournament_results, :except =>  [:edit,:update,:destroy] 
 
-  resources :tournament_informations
+  constraints(:id => /[0-9]+/) do
+    resources :tournament_informations, :except => [:show]
+  end
+
+  constraints(:id => /[A-Z][a-z]+/) do
+    get "tournament_informations/ausschreibung"
+    get "tournament_informations/:id/ausschreibung" => "tournament_informations#ausschreibung"
+    get "tournament_informations/anfahrt"
+    get "tournament_informations/:id/anfahrt" => "tournament_informations#anfahrt"
+    get "tournament_informations/kontakt"
+    get "tournament_informations/:id/kontakt" => "tournament_informations#kontakt"
+  end
 
   devise_for :users
 
@@ -19,7 +35,6 @@ GoSeite::Application.routes.draw do
   get "user/:id/edit_pass" => "user#edit_pass"
   resources :user
 
-  #root :to => "german_go_leagues#index"
   root :to => "user#index"
 
   # The priority is based upon order of creation:

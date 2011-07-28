@@ -1,33 +1,28 @@
-<h1>Listing tournament_players</h1>
-
 <table>
   <tr>
     <th>Name</th>
-    <th>Vorname</th>
     <th>Email</th>
     <th>Dgob</th>
     <th>Studi</th>
     <th>Rank</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="2">Actions</th>
   </tr>
 
 <% @tournament_players.each do |tournament_player| %>
   <tr>
-    <td><%= tournament_player.name %></td>
-    <td><%= tournament_player.vorname %></td>
+    <td><%= link_to tournament_player.name.+(", ".+tournament_player.vorname), tournament_player %></td>
     <td><%= tournament_player.email %></td>
     <td><%= tournament_player.dgob %></td>
     <td><%= tournament_player.studi %></td>
     <td><%= tournament_player.rank %></td>
-    <td><%= link_to 'Show', tournament_player %></td>
     <td><%= link_to 'Edit', edit_tournament_player_path(tournament_player) %></td>
     <td><%= link_to 'Destroy', tournament_player, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Tournament player', new_tournament_player_path %>
+<ul>
+	<li><%= link_to "Turnier bearbeiten", :controller => "tournament_informations", :action => "index" %></li>
+	<li><%= link_to "Ergebnisse eintragen", :controller => "tournament_results", :action => "index" %></li>
+	<li><%= link_to 'Alle Teilnehmer Löschen', {:controller=> "tournament_players",:action => "destroy_all"}, confirm: 'Are you sure?', method: :delete %></li>
+</ul>

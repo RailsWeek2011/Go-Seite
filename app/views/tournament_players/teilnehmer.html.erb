@@ -1,0 +1,20 @@
+<p>Angemeldete Teilnehmer: <b><%= @teilnehmer.count %></b><br>
+<b>Zur </b>
+<%= link_to "Ausschreibung", :controller => "tournament_informations", :action => "ausschreibung" %> | 
+<%= link_to "Regestrierung", :controller => "tournament_players", :action => "new" %></p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Vorname</th>
+    <th>Rank</th>
+  </tr>
+
+<% @teilnehmer.each do |tournament_player| %>
+  <tr>
+    <td><%= tournament_player.name %></td>
+    <td><%= tournament_player.vorname %></td>
+    <td><%= tournament_player.rank %></td>
+  </tr>
+<% end %>
+</table>
