@@ -1,0 +1,14 @@
+<h1>User Area</h1>
+
+<% if can? :manage, User %>
+  <% @users.each do |user| %>
+    <%= link_to user.email, user %>
+    <%= user.Name %>
+    <%= user.Vorname %><br />
+    <%= link_to 'Edit User', edit_user_path(user) %></td>
+    <%= link_to 'Edit User Password', :action => 'edit_pass', :id => user %>
+    <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %><br /><br />
+  <% end %>
+
+  <br /><%= link_to 'New User', new_user_path %><br />
+<% end %>

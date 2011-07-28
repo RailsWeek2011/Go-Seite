@@ -13,13 +13,14 @@ GoSeite::Application.routes.draw do
   resources :forum_threads, :except =>  [:new, :index] 
   resources :forum_areas 
   get "forum_posts/:id/new" => "forum_posts#new"
-  
   get "forum_threads/:id/new" => "forum_threads#new"
   get "forum_threads/:id/show" => "forum_threads#show"
- 
-  
-  root :to => "forum_areas#index"
+
+  get "user/:id/edit_pass" => "user#edit_pass"
+  resources :user
+
   #root :to => "german_go_leagues#index"
+  root :to => "user#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,23 @@
+<% if can? :manage, User %>
+  <h2>Show User</h2>
+
+  <p>
+    <b>E-Mail: </b><%= @user.email %><br />
+    <b>Name: </b><%= @user.Name %><br />
+    <b>Vorname: </b><%= @user.Vorname %><br />
+    <b>Rang: </b><%= @user.Rang %><br />
+    <b>Club: </b><%= @user.Club %><br />
+    <b>DGoB: </b><%= check_box_tag "DGoB", @user.DGoB, nil, {:disabled => true} %><br />
+    <b>Studi: </b><%= check_box_tag "studi", @user.studi, nil, {:disabled => true} %><br />
+    <b>Rolle:</b><br />
+    <blockquote>
+      <% for role in User::ROLES %>
+	<%= check_box_tag "user[roles][]", role, @user.roles.include?(role), {:disabled => true} %>
+	<%=h role.humanize %><br />
+      <% end %>
+    </blockquote>
+  </p>
+
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', :action => "index", :controller => "user" %>
+<% end %>
