@@ -1,4 +1,6 @@
 GoSeite::Application.routes.draw do 
+	#root :to => {:controller => "forum_threads",:action => "bla"}
+	root :to => 'forum_threads#news'
   devise_for :users
 
 	resources :german_go_leagues
@@ -34,9 +36,8 @@ GoSeite::Application.routes.draw do
   get "forum_threads/:id/show" => "forum_threads#show"
 
   get "user/:id/edit_pass" => "user#edit_pass"
+	get "user/profil"
   resources :user
-
-  root :to => "user#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

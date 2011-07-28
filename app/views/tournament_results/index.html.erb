@@ -1,8 +1,12 @@
 <p>
+<% if can? :manage, TournamentResult %>
 <%= link_to "Neue Runde", :controller => "tournament_results", :action => "new" %> | 
 <%= link_to "Turnierverwaltung", :controller => "tournament_informations", :action => "index" %> | 
 <%= link_to "Letzte Runde Löschen", {:controller => "tournament_results", :action => "destroy"}, confirm: 'Are you sure?', method: :delete %> | 
-<%= link_to "Alle Runde Löschen", {:controller => "tournament_results", :action => "destroy_all"}, confirm: 'Are you sure?', method: :delete %>
+<%= link_to "Alle Runde Löschen", {:controller => "tournament_results", :action => "destroy_all"}, confirm: 'Are you sure?', method: :delete %> 
+<% else %>
+	<%= link_to "Turnier Ausschreibung", {:controller => "tournament_informations", :action => "ausschreibung"} %>
+<% end %>
 </p>
 
 <table>
@@ -25,8 +29,14 @@
 						if tournament_result.spieler1 == nil
 					%>
 						Error: Spieler nicht gefunden.
-					<% else %>
-						<%= link_to tournament_result.spieler1.name.+(', '.+(tournament_result.spieler1.vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => 1 %>
+					<% else 
+						playername = tournament_result.spieler1.name.+(', '.+(tournament_result.spieler1.vorname))
+					%>
+						<% if can? :manage, TournamentResult %>
+							<%= link_to playername, :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => 1 %>
+						<% else %>
+							<%= playername %>
+						<% end %>
 					<% end %>
 					</td>			
 				<td>
@@ -51,8 +61,14 @@
 							<% else %>
 							Error: Spieler nicht gefunden.
 							<% end %>
-					<% else %>
-						<%= link_to tournament_result.spieler2.name.+(', '.+(tournament_result.spieler2.vorname)), :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => "2" %>
+					<% else 
+						playername = tournament_result.spieler2.name.+(', '.+(tournament_result.spieler2.vorname))
+					%>
+						<% if can? :manage, TournamentResult %>
+							<%= link_to playername, :controller => "tournament_results", :action => "edit", :id => tournament_result.id, :player => "2" %>
+						<% else %>
+							<%= playername %>
+						<% end %>
 					<% end %>
 				</td>
 			</tr>

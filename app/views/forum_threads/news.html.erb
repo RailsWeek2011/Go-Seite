@@ -1,0 +1,6 @@
+<% @forum_threads.each do |forum_thread| %>
+<h2><%= forum_thread.updated_at.strftime("%d.%m.%y - %H:%M") %></h2>
+<h1><%= link_to forum_thread.title, forum_thread %></h1>
+<p><%=raw RedCloth.new(forum_thread.content).to_html %></p>
+<%= image_tag("trennlinie.png") %>
+<% end %>

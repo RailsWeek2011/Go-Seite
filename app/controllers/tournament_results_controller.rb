@@ -1,6 +1,6 @@
 #encoding: utf-8
 class TournamentResultsController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show]
+	before_filter :authenticate_user!, :except => [:index]
   load_and_authorize_resource
 
   # GET /tournament_results

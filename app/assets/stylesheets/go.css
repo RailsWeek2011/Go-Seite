@@ -63,49 +63,14 @@ img{
 	float:left;
 	background-image:url(/assets/Rahmen_Links.png);
 }
-/* Aus Cake Copy */
-/* Paging */
-div.paging {
-	color: #ccc;
-	margin-bottom: 2em;
-}
-div.paging div.disabled {
-	color: #ddd;
-	display: inline;
-}
-div.paging span {
-}
-div.paging span.current {
-	color: #000;
-}
-div.paging span a {
-}
-/* Scaffold View */
-dl {
-	line-height: 2em;
-	margin: 0em 0em;
-	width: 60%;
-}
-dl.altrow {
-	background: #f4f4f4;
-}
-dt {
-	font-weight: bold;
-	padding-left: 4px;
-	vertical-align: top;
-}
-dd {
-	margin-left: 10em;
-	margin-top: -2em;
-	vertical-align: top;
-}
+
 /* Tables */
 table {
 	background: #fff;
 	border:1px solid #ccc;
 	border-right:0;
 	clear: both;
-	color: #333;
+	color: #000000;
 	margin-bottom: 10px;
 	width: 100%;
 }
@@ -120,36 +85,29 @@ th a {
 	background:#f2f2f2;
 	display: block;
 	padding: 2px 4px;
-	text-decoration: none;
-}
-th a:hover {
-	background: #ccc;
-	color: #333;
+	color: #fff;
 	text-decoration: none;
 }
 table tr td {
 	background: #fff;
 	border-right: 1px solid #ccc;
+	
 	padding: 4px;
 	text-align: left;
 	vertical-align: top;
 }
-table tr.altrow td {
-	background: #f4f4f4;
-}
+
 td.actions {
+	width: 150px;
 	text-align: center;
 	white-space: nowrap;
 }
+td a{
+	color: #000;
+}
 td.actions a {
+	color: #000;
 	margin: 0px 6px;
-}
-.cake-sql-log table {
-	background: #f4f4f4;
-}
-.cake-sql-log td {
-	padding: 4px 8px;
-	text-align: left;
 }
 /********/
 div.message {
@@ -176,16 +134,15 @@ label {
 	margin:0px;
 }
 input, textarea {
-	clear: both;
 	font-size: 120%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
 	padding: 0px;
 	width: 75%;
 	position: relative;
-        margin:0px 0px 5px 0px;
+  margin:0px 0px 5px 0px;
 }
 textarea{
-	height:45px;
+	height:180px;
 }
 
 input[type=checkbox] {
@@ -199,19 +156,6 @@ input[type=submit] {
 	padding: 2px 5px;
 	width: auto;
 	vertical-align: bottom;
-}
-/* /Aus Cake Copy */
-.flash{
-	border-bottom:1px solid gray;
-	/*background-color:gray;*/
-}
-.flash_failure {
-  font-size:120%;
-  color:#CC0000;
-}
-.flash_success {
-  font-size:120%;
-  color:#00FF00;
 }
 
 #div_Inhalt{

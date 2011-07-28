@@ -1,20 +1,20 @@
 <table>
   <tr>
     <th>Title</th>
-    <th colspan="2">Actions</th>
+    <% if can? :manage, ForumArea %><th>Actions</th><% end %>
   </tr>
 
 <% @forum_areas.each do |forum_area| %>
   <tr>
     <td><%= link_to forum_area.title, forum_area %></td>
-		<td>
-    <% if can? :update, forum_area %>
-      <%= link_to 'Edit', edit_forum_area_path(forum_area) %>
-    <% end %>
-    <% if can? :destroy, forum_area %>
-      <%= link_to 'Destroy', forum_area, confirm: 'Are you sure?', method: :delete %>
-    <% end %>
-		</td>
+		<% unless forum_area.id == 1 %>
+		  <% if can? :manage, forum_area %>
+				<td class="actions">
+		    <%= link_to 'Edit', edit_forum_area_path(forum_area) %>
+		   	<%= link_to 'Destroy', forum_area, confirm: 'Are you sure?', method: :delete %>
+				</td>
+		  <% end %>
+		<% end %>
   </tr>
 <% end %>
 </table>

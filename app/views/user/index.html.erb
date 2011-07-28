@@ -1,14 +1,21 @@
-<h1>User Area</h1>
-
 <% if can? :manage, User %>
+	<table>
+		<tr>
+			<th><E-Mail</th>
+			<th>Name</th>
+			<th>Vorname</th>
+			<th>Actions</th>
+		<tr>
   <% @users.each do |user| %>
-    <%= link_to user.email, user %>
-    <%= user.Name %>
-    <%= user.Vorname %><br />
-    <%= link_to 'Edit User', edit_user_path(user) %></td>
-    <%= link_to 'Edit User Password', :action => 'edit_pass', :id => user %>
-    <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %><br /><br />
+		<tr>
+    	<td><%= link_to user.email, user %></td>
+    	<td><%= user.Name %></td>
+    	<td><%= user.Vorname %><br /></td>
+    	<td><%= link_to 'Edit Profile', edit_user_path(user) %> | 
+    	<%= link_to 'Edit Password', :action => 'edit_pass', :id => user %> | 
+    	<%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+		</tr>
   <% end %>
-
-  <br /><%= link_to 'New User', new_user_path %><br />
+	</table>
+  <%= link_to 'New User', new_user_path %>
 <% end %>

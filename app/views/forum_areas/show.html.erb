@@ -1,19 +1,25 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Actions</th>
+    <% if can? :manage, ForumThread %>
+			<th>Actions</th>
+		<% end %>
   </tr>
 <% @forum_area.forum_threads.each do |forum_thread| %>
   <tr>
     <td><%= link_to forum_thread.title, forum_thread_path(forum_thread) %></td>
-    <td>
+    
 			<% if can? :destroy, @forum_thread %>
-				<%= link_to 'Destroy', forum_thread , confirm: 'Are you sure?', method: :delete %>
+				<td><%= link_to 'Destroy', forum_thread , confirm: 'Are you sure?', method: :delete %></td>
 			<% end %>		
-		</td>
+		
   </tr>
 <% end %>
 </table>
-<%= link_to 'Neuer Thread', :controller => "forum_threads", :action => "new", :id => @forum_area  %> |
-<%= link_to 'Edit', edit_forum_area_path(@forum_area) %> |
+<%
+	if can? :manage, ForumThread
+%>
+	<%= link_to 'Neuer Thread', :controller => "forum_threads", :action => "new", :id => @forum_area  %> |
+	<%= link_to 'Edit', edit_forum_area_path(@forum_area) %> |
+<% end %>
 <%= link_to 'Back', forum_areas_path %>
