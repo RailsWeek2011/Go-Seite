@@ -17,6 +17,7 @@ class ForumPostsController < ApplicationController
 
   # POST /forum_posts
   def create
+		title = "Antwort erstellen"
     @forum_post = ForumPost.new(params[:forum_post])
     @forum_post.user = current_user
 
@@ -29,6 +30,7 @@ class ForumPostsController < ApplicationController
 
   # PUT /forum_posts/1
   def update
+		@title = "Antwort bearbeiten"
     @forum_post = ForumPost.find(params[:id])
 
     if @forum_post.update_attributes(params[:forum_post])

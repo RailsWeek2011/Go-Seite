@@ -1,34 +1,23 @@
 class GermanGoLeaguesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index]
   load_and_authorize_resource 
 
   # GET /german_go_leagues
   # GET /german_go_leagues.json
   def index
     @german_go_leagues = GermanGoLeague.all
-
+		@title = "Bundesliga Spiele"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @german_go_leagues }
     end
   end
 
-  # GET /german_go_leagues/1
-  # GET /german_go_leagues/1.json
-  def show
-    #@german_go_league = GermanGoLeague.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @german_go_league }
-    end
-  end
-
   # GET /german_go_leagues/new
   # GET /german_go_leagues/new.json
   def new
-    #@german_go_league = GermanGoLeague.new
-
+    @german_go_league = GermanGoLeague.new
+		@title = "Neues Spiel eintragen" 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @german_go_league }
@@ -37,17 +26,19 @@ class GermanGoLeaguesController < ApplicationController
 
   # GET /german_go_leagues/1/edit
   def edit
-    #@german_go_league = GermanGoLeague.find(params[:id])
+		@title = "Bundesliga Eintrag bearbeiten"
+    @german_go_league = GermanGoLeague.find(params[:id])
   end
 
   # POST /german_go_leagues
   # POST /german_go_leagues.json
   def create
-    #@german_go_league = GermanGoLeague.new(params[:german_go_league])
-
+    @german_go_league = GermanGoLeague.new(params[:german_go_league])
+		@title = "Neues Spiel eintragen" 
+    
     respond_to do |format|
       if @german_go_league.save
-        format.html { redirect_to @german_go_league, notice: 'German go league was successfully created.' }
+        format.html { redirect_to :action => "index" }
         format.json { render json: @german_go_league, status: :created, location: @german_go_league }
       else
         format.html { render action: "new" }
@@ -59,11 +50,12 @@ class GermanGoLeaguesController < ApplicationController
   # PUT /german_go_leagues/1
   # PUT /german_go_leagues/1.json
   def update
-    #@german_go_league = GermanGoLeague.find(params[:id])
+    @title = "Bundesliga Eintrag bearbeiten"
+    @german_go_league = GermanGoLeague.find(params[:id])
 
     respond_to do |format|
       if @german_go_league.update_attributes(params[:german_go_league])
-        format.html { redirect_to @german_go_league, notice: 'German go league was successfully updated.' }
+        format.html { redirect_to :action => "index" }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

@@ -4,7 +4,7 @@ class ForumThreadsController < ApplicationController
 
 	def news
 		@title = "News"
-		@forum_thread = ForumThread.where("area_id = 1")
+		@news = ForumThread.where("forum_area_id = 1")
 	end
 
   # GET /forum_threads/1
@@ -30,15 +30,27 @@ class ForumThreadsController < ApplicationController
   def create
     @forum_thread = ForumThread.new(params[:forum_thread])
     @forum_thread.user = current_user
-    if @forum_thread.save
-      redirect_to :controller => "forum_threads", :action => "show", :id => @forum_thread, notice: 'Forum thread was successfully created.'
-    else
-      render action: "new"
-    end
+		@title = "Neuer Thread im Bereich \"".+(ForumArea.find(@forum_thread.forum_area).title).+"\""
+		wrote = true
+		if @forum_thread.forum_area.id == 1
+			unless can? :manage, ForumThread
+				wrote = false
+			end
+		end
+		if wrote
+		  if @forum_thread.save
+		    redirect_to :controller => "forum_threads", :action => "show", :id => @forum_thread, notice: 'Forum thread was successfully created.'
+		  else
+		    render action: "new"
+		  end
+		else
+			redirect_to :controller => "forum_areas", :action => "show", :id => @forum_thread.forum_area
+		end
   end
 
   # PUT /forum_threads/1
   def update
+		@title = "Thread bearbeiten"
     #@forum_thread = ForumThread.find(params[:id])
     if @forum_thread.update_attributes(params[:forum_thread])
       redirect_to :controller => "forum_threads", :action => "show", :id => params[:id], notice: 'Forum thread was successfully updated.'

@@ -14,7 +14,6 @@ class Ability
 		can :create, TournamentPlayer
 		can :teilnehmer, TournamentPlayer
 
-		#can :manage, :all
     if user.role? :admin
       can :manage, :all
     end
@@ -33,11 +32,11 @@ class Ability
     end
     if user.role? :author
       can :create, ForumThread
+			can :update, ForumThread, :user_id => user.id
       can :create, ForumPost
       can :update, ForumPost, :user_id => user.id
       can :edit, ForumPost, :user_id => user.id
 			can :profil, User
-			#can :manage, TournamentInformation
     end
   end
 

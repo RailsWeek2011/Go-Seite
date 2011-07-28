@@ -18,13 +18,13 @@
       <div id="div_Content_Box">
 	<div id="div_Menue">
 	  <%= link_to image_tag("Start.png",{:border => 0,:alt => "Start"}), :controller => "/forum_threads",:action => "news"	 %>
-		<%= link_to "Forum", :controller => "/forum_areas", :action => "index" %>
-		<%= link_to "Turnier", :controller => "/tournament_informations", :action => "ausschreibung" %>
-		<%= link_to "Bundesliga", :controller => "/german_go_leagues", :action => "index" %>
+		<%= link_to image_tag("Forum.png",{:border => 0,:alt => "Forum"}), :controller => "/forum_areas", :action => "index" %>
+		<%= link_to image_tag("Turnier.png",{:border => 0,:alt => "Turnier"}), :controller => "/tournament_informations", :action => "ausschreibung" %>
+		<%= link_to image_tag("Bundesliga.png",{:border => 0,:alt => "Bundesliga"}), :controller => "/german_go_leagues", :action => "index" %>
 		<% if user_signed_in? %>
-			<%= link_to "Profil", :controller => "/user", :action=> "profil" %>
+			<%= link_to image_tag("Profil.png",{:border => 0,:alt => "Profil"}), :controller => "/user", :action=> "profil" %>
 			<% if can? :manage, User %>
-				<%= link_to "User Verwaltung", :controller => "/user", :action=>"index" %>
+				<%= link_to image_tag("Admin.png",{:border => 0,:alt => "Admin"}), :controller => "/user", :action=>"index" %>
 			<% end %>
 		<% end %>
 	</div>

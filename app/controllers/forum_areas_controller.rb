@@ -32,16 +32,18 @@ class ForumAreasController < ApplicationController
   # POST /forum_areas
   def create
     @forum_area = ForumArea.new(params[:forum_area])
-
-      if @forum_area.save
-        redirect_to @forum_area, notice: 'Forum area was successfully created.' 
-      else
-        render action: "new" 
-      end
+		@title = "Neuer Bereich"
+   
+    if @forum_area.save
+      redirect_to @forum_area, notice: 'Forum area was successfully created.' 
+    else
+      render action: "new" 
+    end
   end
 
   # PUT /forum_areas/1
   def update
+		@title = "Bereich bearbeiten"
 		if params[:id] == "1"
 			redirect_to :controller => "forum_areas", :action => "index"
 		end

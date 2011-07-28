@@ -3,7 +3,7 @@ GoSeite::Application.routes.draw do
 	root :to => 'forum_threads#news'
   devise_for :users
 
-	resources :german_go_leagues
+	resources :german_go_leagues, :except => [:show]
 
   get "tournament_players/teilnehmer" => "tournament_players#teilnehmer"
   delete "tournament_players/destroy_all"

@@ -8,18 +8,27 @@
 <% @forum_area.forum_threads.each do |forum_thread| %>
   <tr>
     <td><%= link_to forum_thread.title, forum_thread_path(forum_thread) %></td>
-    
-			<% if can? :destroy, @forum_thread %>
+			<% if can? :destroy, ForumThread %>
 				<td><%= link_to 'Destroy', forum_thread , confirm: 'Are you sure?', method: :delete %></td>
 			<% end %>		
 		
   </tr>
 <% end %>
 </table>
+<% if can? :create, ForumThread 
+	wrote = true
+	if @forum_area.id == 1
+			unless can? :manage, ForumThread
+				wrote = false
+			end
+	end
+	if wrote %>
+		<%= link_to 'Neuer Thread', :controller => "forum_threads", :action => "new", :id => @forum_area  %> |
+	<% end %>
+<% end %>
 <%
 	if can? :manage, ForumThread
 %>
-	<%= link_to 'Neuer Thread', :controller => "forum_threads", :action => "new", :id => @forum_area  %> |
 	<%= link_to 'Edit', edit_forum_area_path(@forum_area) %> |
 <% end %>
 <%= link_to 'Back', forum_areas_path %>
