@@ -1,6 +1,6 @@
 #encoding: utf-8
 class TournamentPlayersController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show,:new,:create,:teilnehmer]
+	before_filter :authenticate_user!, :except => [:new,:create,:teilnehmer]
   load_and_authorize_resource
   # GET /tournament_players
   def index
@@ -17,7 +17,6 @@ class TournamentPlayersController < ApplicationController
   def teilnehmer
 		@title = "Teilnehmer Liste"
 		@teilnehmer = TournamentPlayer.all
-		
   end
 
   # GET /tournament_players/new
@@ -43,6 +42,7 @@ class TournamentPlayersController < ApplicationController
   # POST /tournament_players
   def create
     @tournament_player = TournamentPlayer.new(params[:tournament_player])
+    @title = "Neuer Teilnehmer"
 
     if @tournament_player.save
       redirect_to :controlelr => "tournament_players",:action => "teilnehmer" , notice: 'Sie wurden Erfolgreich für das Turnier Eingetragen.'
@@ -54,7 +54,7 @@ class TournamentPlayersController < ApplicationController
   # PUT /tournament_players/1
   def update
     @tournament_player = TournamentPlayer.find(params[:id])
-
+		@title ="Teilnehmer: #{@tournament_player.name}, #{@tournament_player.vorname}"
     if @tournament_player.update_attributes(params[:tournament_player])
       redirect_to @tournament_player, notice: 'Tournament player was successfully updated.'
     else

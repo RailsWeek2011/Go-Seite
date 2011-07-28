@@ -24,7 +24,7 @@
   </tr>
 		<% round.each do |tournament_result| %>
 			<tr>
-				<td>
+				<td class="tournament_results_spieler1">
 					<%
 						if tournament_result.spieler1 == nil
 					%>
@@ -39,7 +39,7 @@
 						<% end %>
 					<% end %>
 					</td>			
-				<td>
+				<td class="tournament_results">
 					<% case (tournament_result.ergebnis)
 						when 1					
 					%>
@@ -57,7 +57,7 @@
 						if tournament_result.spieler2 == nil 
 							if tournament_result.ergebnis == 3
 							%>
-							Freilos
+							<u>Freilos</u>
 							<% else %>
 							Error: Spieler nicht gefunden.
 							<% end %>
