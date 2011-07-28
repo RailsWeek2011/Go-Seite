@@ -4,7 +4,16 @@ class Ability
   def initialize(user)
     user ||= User.new
     can :read, :all
-		
+
+		can :news, ForumThread
+
+		can :ausschreibung, TournamentInformation
+		can :kontakt, TournamentInformation
+		can :anfahrt, TournamentInformation
+
+		can :create, TournamentPlayer
+		can :teilnehmer, TournamentPlayer
+
 		#can :manage, :all
     if user.role? :admin
       can :manage, :all
@@ -27,6 +36,7 @@ class Ability
       can :create, ForumPost
       can :update, ForumPost, :user_id => user.id
       can :edit, ForumPost, :user_id => user.id
+			can :profil, User
 			#can :manage, TournamentInformation
     end
   end

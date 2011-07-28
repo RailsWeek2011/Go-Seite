@@ -6,7 +6,6 @@ class ForumAreasController < ApplicationController
   def index	
 		@title = "Forum"
     @forum_areas = ForumArea.all
-
   end
 
   # GET /forum_areas/1
@@ -23,6 +22,9 @@ class ForumAreasController < ApplicationController
 
   # GET /forum_areas/1/edit
   def edit
+		if params[:id] == "1"
+			redirect_to :controller => "forum_areas", :action => "index"
+		end
     @forum_area = ForumArea.find(params[:id])
 		@title = "Bereich bearbeiten"
   end
@@ -40,17 +42,23 @@ class ForumAreasController < ApplicationController
 
   # PUT /forum_areas/1
   def update
+		if params[:id] == "1"
+			redirect_to :controller => "forum_areas", :action => "index"
+		end
     @forum_area = ForumArea.find(params[:id])
 
-      if @forum_area.update_attributes(params[:forum_area])
-        redirect_to @forum_area, notice: 'Forum area was successfully updated.' 
-      else
-        render action: "edit" 
-      end
+    if @forum_area.update_attributes(params[:forum_area])
+      redirect_to @forum_area, notice: 'Forum area was successfully updated.' 
+    else
+      render action: "edit" 
+    end
   end
 
   # DELETE /forum_areas/1
   def destroy
+		if params[:id] == "1"
+			redirect_to :controller => "forum_areas", :action => "index"
+		end
     @forum_area = ForumArea.find(params[:id])
     @forum_area.destroy
 

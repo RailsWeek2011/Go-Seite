@@ -1,6 +1,6 @@
 #encoding: utf-8
 class TournamentPlayersController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show]
+	before_filter :authenticate_user!, :except => [:index, :show,:new,:create,:teilnehmer]
   load_and_authorize_resource
   # GET /tournament_players
   def index
@@ -24,6 +24,14 @@ class TournamentPlayersController < ApplicationController
   def new
 		@title = "Neuer Teilnehmer"
     @tournament_player = TournamentPlayer.new
+		if user_signed_in?
+			@tournament_player.name = current_user.Name
+			@tournament_player.vorname = current_user.Vorname
+			@tournament_player.email = current_user.email
+			@tournament_player.dgob = current_user.DGoB
+			@tournament_player.studi = current_user.studi
+			@tournament_player.rank = current_user.Rang
+		end
   end
 
   # GET /tournament_players/1/edit

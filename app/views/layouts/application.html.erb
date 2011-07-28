@@ -17,9 +17,16 @@
       <div id="div_Platzhalter_2"></div>
       <div id="div_Content_Box">
 	<div id="div_Menue">
-	  <%= image_tag("Start.png",{:border => 0,:alt => "Start"}) %>
+	  <%= link_to image_tag("Start.png",{:border => 0,:alt => "Start"}), :controller => "/forum_threads",:action => "news"	 %>
 		<%= link_to "Forum", :controller => "/forum_areas", :action => "index" %>
 		<%= link_to "Turnier", :controller => "/tournament_informations", :action => "ausschreibung" %>
+		<%= link_to "Bundesliga", :controller => "/german_go_leagues", :action => "index" %>
+		<% if user_signed_in? %>
+			<%= link_to "Profil", :controller => "/user", :action=> "profil" %>
+			<% if can? :manage, User %>
+				<%= link_to "User Verwaltung", :controller => "/user", :action=>"index" %>
+			<% end %>
+		<% end %>
 	</div>
 	<div id="div_Ueberschrift"><%= @title %></div>
 	<div id="div_Rumpf">
@@ -37,7 +44,7 @@
 			<div id="div_Rahmen_Unten">
 				<div id="user_nav">
 	      <% if user_signed_in? %>
-		Signed in as <%= current_user.email %>. Not you?
+		 <%= current_user.email %>. Not you?
 		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 	      <% else %>
 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>

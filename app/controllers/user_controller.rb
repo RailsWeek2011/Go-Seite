@@ -13,18 +13,27 @@ class UserController < ApplicationController
 
   # GET /user/new
   def new
+		
   end
 
   # GET /user/1/edit
   def edit
+		
   end
 
   # GET /user/1/edit
   def edit_pass
+		
   end
+	
+	def profil
+		@title = "Profil"
+		@user = User.find current_user
+		#redirect_to edit_user_registration_path
+	end
 
-  # POST /forum_areas
   def create
+		#@user = User.new(params[:user])
     if @user.save
       redirect_to @user, notice: 'User was successfully created.' 
     else
@@ -34,6 +43,8 @@ class UserController < ApplicationController
 
   # PUT /user/1
   def update
+		@user = User.find(params[:id])
+
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'User was successfully updated.' 
     else

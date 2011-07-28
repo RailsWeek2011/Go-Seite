@@ -1,6 +1,11 @@
 class ForumThreadsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show,:news]
   load_and_authorize_resource
+
+	def news
+		@title = "News"
+		@forum_thread = ForumThread.where("area_id = 1")
+	end
 
   # GET /forum_threads/1
   def show

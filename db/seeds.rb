@@ -19,3 +19,7 @@ User.new({:Name => "u5", :email => "u5@user.com", :password => "123456", :passwo
 User.new({:Name => "u6", :email => "u6@user.com", :password => "123456", :password_confirmation => "123456"}).save
 User.new({:Name => "u7", :email => "u7@user.com", :password => "123456", :password_confirmation => "123456"}).save
 User.new({:Name => "u8", :email => "u8@user.com", :password => "123456", :password_confirmation => "123456"}).save
+
+news = ForumArea.new
+news.title = "News"
+news.save

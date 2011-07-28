@@ -1,5 +1,5 @@
 class TournamentInformationsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show,:ausschreibung]
+  before_filter :authenticate_user!, :except => [:ausschreibung,:kontakt,:anfahrt]
   load_and_authorize_resource
 
 	# GET /tournament_informations
@@ -15,32 +15,44 @@ class TournamentInformationsController < ApplicationController
 
   def ausschreibung
 		@title = "Turnier Ausschreibung"
-    if params[:id] == nil
-			@information = TournamentInformation.last.ausschreibung
+		if TournamentInformation.count == 0
+			render action: "no_turnier"
 		else
-    	@information = TournamentInformation.find(params[:id]).ausschreibung
-		end
-		render action: "information"
+    	if params[:id] == nil
+				@information = TournamentInformation.last.ausschreibung
+			else
+    		@information = TournamentInformation.find(params[:id]).ausschreibung
+			end
+			render action: "information"
+		end 
   end
 
 	def anfahrt
 		@title = "Turnier Anfahrt"
-    if params[:id] == nil
-			@information = TournamentInformation.last.anfahrt
+		if TournamentInformation.count == 0
+			render action: "no_turnier"
 		else
-    	@information = TournamentInformation.find(params[:id]).anfahrt
+		  if params[:id] == nil
+				@information = TournamentInformation.last.anfahrt
+			else
+		  	@information = TournamentInformation.find(params[:id]).anfahrt
+			end
+			render action: "information"
 		end
-		render action: "information"
   end
 
   def kontakt
 		@title = "Turnier Kontakt"
-    if params[:id] == nil
-			@information = TournamentInformation.last.kontakt
+		if TournamentInformation.count == 0
+			render action: "no_turnier"
 		else
-    	@information = TournamentInformation.find(params[:id]).kontakt
+		  if params[:id] == nil
+				@information = TournamentInformation.last.kontakt
+			else
+		  	@information = TournamentInformation.find(params[:id]).kontakt
+			end
+			render action: "information"
 		end
-		render action: "information"
   end
 
   # GET /tournament_informations/new
