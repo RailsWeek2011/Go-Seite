@@ -7,8 +7,8 @@
     <b>Vorname: </b><%= @user.Vorname %><br />
     <b>Rang: </b><%= @user.Rang %><br />
     <b>Club: </b><%= @user.Club %><br />
-    <b>DGoB: </b><%= check_box_tag "DGoB", @user.DGoB, nil, {:disabled => true} %><br />
-    <b>Studi: </b><%= check_box_tag "studi", @user.studi, nil, {:disabled => true} %><br />
+    <b>DGoB: </b><%= :DGoB %><%= check_box_tag "DGoB", true, @user.DGoB, {:disabled => true} %><br />
+    <b>Studi: </b><%= check_box_tag "studi", true, @user.studi, {:disabled => true} %><br />
     <b>Rolle:</b><br />
     <blockquote>
       <% for role in User::ROLES %>
