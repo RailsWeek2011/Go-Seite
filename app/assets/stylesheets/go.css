@@ -211,3 +211,10 @@ h1{
 h1 a{
     color:#975b04;
 }
+.tournament_results{
+	text-align:center;
+	width: 10%;
+}
+.tournament_results_spieler1{
+	text-align:right;
+}
